@@ -1,14 +1,10 @@
 package com.adema.touristapi.attraction;
 
-import com.adema.touristapi.city.City;
-import com.adema.touristapi.country.Country;
 import jakarta.persistence.*;
-
-import java.io.Serializable;
 
 @Entity
 @Table(name = "attractions")
-public class Attraction implements Serializable {
+public class Attraction {
     @Id
     @SequenceGenerator(
             name = "attraction_sequence",
@@ -21,20 +17,37 @@ public class Attraction implements Serializable {
     )
     private Long id;
     private String name;
+    private String country;
+    private String city;
     private String description;
     private String lat;
     private String lon;
+    @Enumerated(EnumType.STRING)
+    private Significance significance;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
-    private City city;
+    public enum Significance {
+        SIGNIFICANT, VERY_SIGNIFICANT, INEVITABLE
+    }
 
-    public Attraction(Long id, String name, String description, String lat, String lon) {
+    public Attraction(Long id, String name, String country, String city, String description, String lat, String lon, Significance significance) {
         this.id = id;
         this.name = name;
+        this.country = country;
+        this.city = city;
         this.description = description;
         this.lat = lat;
         this.lon = lon;
+        this.significance = significance;
+    }
+
+    public Attraction(String name, String country, String city, String description, String lat, String lon, Significance significance) {
+        this.name = name;
+        this.country = country;
+        this.city = city;
+        this.description = description;
+        this.lat = lat;
+        this.lon = lon;
+        this.significance = significance;
     }
 
     public Attraction() {
@@ -45,9 +58,12 @@ public class Attraction implements Serializable {
         return "Attraction{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
                 ", description='" + description + '\'' +
                 ", lat='" + lat + '\'' +
                 ", lon='" + lon + '\'' +
+                ", significance=" + significance +
                 '}';
     }
 }

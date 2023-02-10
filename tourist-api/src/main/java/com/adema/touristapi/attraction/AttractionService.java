@@ -12,9 +12,12 @@ public class AttractionService {
                 new Attraction(
                         1L,
                         "Gazi Husrev-Begova Biblioteka",
+                        "Bosna i Hercegovina",
+                        "Sarajevo",
                         "Opis atrakcije",
                         "53.2734",
-                        "-7.77832031")
+                        "-7.77832031",
+                        Attraction.Significance.INEVITABLE)
         );
     }
 }
