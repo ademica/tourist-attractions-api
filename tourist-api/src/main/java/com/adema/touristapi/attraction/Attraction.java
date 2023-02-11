@@ -1,9 +1,13 @@
 package com.adema.touristapi.attraction;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "attractions")
+@SQLDelete(sql="UPDATE attractions SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class Attraction {
     @Id
     @SequenceGenerator(
@@ -22,6 +26,11 @@ public class Attraction {
     private String description;
     private String lat;
     private String lon;
+    private boolean deleted = Boolean.FALSE;
+
+    //treba dodati atribut prosjecna ocjena koji ce se izracunavati na osnovu podataka u bp
+    //treba dodati i atribut aktivno/neaktivno DODANO
+
     @Enumerated(EnumType.STRING)
     private Significance significance;
 
@@ -51,6 +60,70 @@ public class Attraction {
     }
 
     public Attraction() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public Significance getSignificance() {
+        return significance;
+    }
+
+    public void setSignificance(Significance significance) {
+        this.significance = significance;
     }
 
     @Override
