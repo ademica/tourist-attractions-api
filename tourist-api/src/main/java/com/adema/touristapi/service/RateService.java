@@ -1,7 +1,7 @@
 package com.adema.touristapi.service;
 
-import org.springframework.stereotype.Service;
+import com.adema.touristapi.model.Rate;
 
-@Service
-public class RateService {
+public interface RateService {
+    Rate createRate(Long attractionId, Rate rate);
 }

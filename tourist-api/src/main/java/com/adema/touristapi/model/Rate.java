@@ -1,6 +1,5 @@
 package com.adema.touristapi.model;
 
-import com.adema.touristapi.model.Attraction;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -23,8 +22,8 @@ public class Rate {
     @Max(value=5)
     private Integer rate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="attraction_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "attraction_id", nullable = false)
     private Attraction attraction;
 
     public Rate(Long id, Integer rate, Attraction attraction) {
