@@ -1,6 +1,8 @@
-package com.adema.touristapi.attraction;
+package com.adema.touristapi.model;
 
+import com.adema.touristapi.enumeration.Significance;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -20,46 +22,35 @@ public class Attraction {
             generator = "attraction_sequence"
     )
     private Long id;
+    @NotEmpty(message = "Name can not be empty")
     private String name;
+    @NotEmpty(message = "Country can not be empty")
     private String country;
+    @NotEmpty(message = "City can not be empty")
     private String city;
     private String description;
+    @NotEmpty(message = "Latitude can not be empty")
     private String lat;
+    @NotEmpty(message = "Longitude can not be empty")
     private String lon;
+
+    private Significance significance;
     private boolean deleted = Boolean.FALSE;
 
     //treba dodati atribut prosjecna ocjena koji ce se izracunavati na osnovu podataka u bp
     //treba dodati i atribut aktivno/neaktivno DODANO
-
-    @Enumerated(EnumType.STRING)
-    private Significance significance;
-
-    public enum Significance {
-        SIGNIFICANT, VERY_SIGNIFICANT, INEVITABLE
-    }
-
-    public Attraction(Long id, String name, String country, String city, String description, String lat, String lon, Significance significance) {
-        this.id = id;
-        this.name = name;
-        this.country = country;
-        this.city = city;
-        this.description = description;
-        this.lat = lat;
-        this.lon = lon;
-        this.significance = significance;
-    }
-
-    public Attraction(String name, String country, String city, String description, String lat, String lon, Significance significance) {
-        this.name = name;
-        this.country = country;
-        this.city = city;
-        this.description = description;
-        this.lat = lat;
-        this.lon = lon;
-        this.significance = significance;
-    }
+    //update konstruktor za significance
 
     public Attraction() {
+    }
+
+    public Attraction(String name, String country, String city, String description, String lat, String lon) {
+        this.name = name;
+        this.country = country;
+        this.city = city;
+        this.description = description;
+        this.lat = lat;
+        this.lon = lon;
     }
 
     public Long getId() {
