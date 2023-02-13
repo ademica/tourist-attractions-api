@@ -1,5 +1,7 @@
-package com.adema.touristapi.attraction;
+package com.adema.touristapi.config;
 
+import com.adema.touristapi.model.Attraction;
+import com.adema.touristapi.repo.AttractionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +20,8 @@ public class AttractionConfig {
                     "Sarajevo",
                     "Opis atrakcije",
                     "53.2734",
-                    "-7.77832031",
-                    Attraction.Significance.INEVITABLE
+                    "-7.77832031"
+
             );
 
             Attraction att2 = new Attraction(
@@ -28,8 +30,8 @@ public class AttractionConfig {
                     "Velika Kladuša",
                     "Opis neki",
                     "12.12345",
-                    "18.765",
-                    Attraction.Significance.SIGNIFICANT
+                    "18.765"
+
             );
 
             repository.saveAll(
