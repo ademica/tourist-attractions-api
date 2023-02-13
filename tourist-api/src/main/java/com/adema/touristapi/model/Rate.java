@@ -1,6 +1,6 @@
-package com.adema.touristapi.rate;
+package com.adema.touristapi.model;
 
-import com.adema.touristapi.attraction.Attraction;
+import com.adema.touristapi.model.Attraction;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

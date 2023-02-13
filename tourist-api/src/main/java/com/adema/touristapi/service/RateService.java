@@ -1,4 +1,4 @@
-package com.adema.touristapi.rate;
+package com.adema.touristapi.service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.adema.touristapi.rate;
+package com.adema.touristapi.repo;
 
 public interface RateRepository {
 }
