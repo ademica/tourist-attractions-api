@@ -33,7 +33,6 @@ public class Attraction {
     private String lat;
     @NotEmpty(message = "Longitude can not be empty")
     private String lon;
-
     private Significance significance;
     private boolean deleted = Boolean.FALSE;
 

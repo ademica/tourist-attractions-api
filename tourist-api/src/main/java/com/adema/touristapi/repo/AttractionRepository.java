@@ -13,4 +13,5 @@ public interface AttractionRepository extends JpaRepository<Attraction, Long> {
 
     Optional<Attraction> findAttractionByName(String name);
     List<Attraction> findAttractionsBySignificance(Significance significance);
+    Attraction findAttractionById(Long id);
 }
